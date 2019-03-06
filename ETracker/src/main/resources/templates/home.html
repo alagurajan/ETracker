@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <div th:replace="fragments/header :: header-css"/>
+</head>
+<body >
+<div th:replace="fragments/header :: header"/>
+<div class="position-sticky">
+ <table width="100%" border="1" >
+ <tr>
+ <td width="70%" height="550">
+  	<embed th:src="@{'/pdf/'+${PdfFile}+'.pdf'}"   width="100%" height="100%" type='application/pdf'>
+ </td>
+ <td  width="30%">
+ <table id="empTable" class="table table-fixed">
+		<thead class="thead-dark">
+			<tr>
+				<th>Sl No</th>
+				<th>Last Name</th>
+ 				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="tempEmployee, iterator : ${employees}">
+				<td th:text="${iterator.index+1}"></td>
+				<td th:text="${tempEmployee.firstName}"></td>
+ 				<td>
+					<a th:href="@{/home(PdfId=${tempEmployee.id})}"
+					class ="btn btn-info btn-sm">Click</a>
+				 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</td>
+ </tr>
+ </table>
+ </div>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
