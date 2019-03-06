@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+
+<h3>City Master</h3>
+<hr>
+<p class="h4 mb-4">Save City</p>
+
+<form action="#" th:action="@{/master/city/save}"
+				th:object="${city}" method="POST">
+	<input type="hidden" th:field="*{id}">
+	
+	<div class="form-group blu-margin">
+	    <select class="form-control mb-4 col-4"  name="*{country_id}" id="dropOperator">
+		    <option value="0">select operator</option>
+		    <option th:each="countries : ${countries}" th:value="${countries.id}" th:text="${countries.countryName}"></option>
+	    </select>
+	</div>
+	<input type="text" th:field="*{cityName}"
+			class="form-control mb-4 col-4" placeholder="City name">
+	<button type="submit" class="btn btn-info col-2" >Save</button>
+</form>
+<hr>
+<a th:href="@{/master/city/list}">Back to the City List</a>
+</div>
+	<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
