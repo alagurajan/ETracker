@@ -20,14 +20,14 @@
 	<table id="empTable" class="table table-bordered table-striped table-sm">
 		<thead class="thead-dark">
 			<tr>
-				<th>Country Id</th>
+				<th>Sl No</th>
 				<th>Country Name</th>
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="tempCountry : ${country}">
-				<td th:text="${tempCountry.id}"></td>
+				<td th:text="${tempCountryStat.index+1}"></td>
 				<td th:text="${tempCountry.countryName}"></td>
 				<td>
 					<a th:href="@{/master/country/update(countryId=${tempCountry.id})}"

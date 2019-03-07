@@ -2,9 +2,13 @@ package com.source.etracker.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +33,23 @@ public class MasterController {
 	private CityRepository cityRepository;
 	
 	@PostMapping("/country/save")
-	public String saveCountry(@ModelAttribute("country") Country country ) {
-		countryRepository.save(country);
-		return "redirect:list";
+	public String saveCountry(@Valid @ModelAttribute("country") Country country , BindingResult bindingResult) {
+		if(bindingResult.hasErrors())
+		{
+			return "redirect:add";
+		}
+		else
+		{
+			try
+			{
+				countryRepository.save(country);
+			}
+			catch(DataIntegrityViolationException e) {
+				System.out.println("Country is alreay available in our database");
+				return "redirect:add";
+			}
+			return "redirect:list";
+		}
 	}
 	
 	@GetMapping("/country/add")
@@ -65,8 +83,8 @@ public class MasterController {
 	}
 	
 	
-	@PostMapping("country/{country_id}/city/save")
-	public String saveCity(@PathVariable ("country_id") Long theId, @RequestBody City city ) {
+	@PostMapping("/city/save")
+	public String saveCity(@RequestParam("country_id") Long theId, @ModelAttribute("city") City city ) {
 		 countryRepository.findById(theId).map(country -> {
 			city.setCountry(country);
             return cityRepository.save(city);
@@ -93,8 +111,10 @@ public class MasterController {
 	}
 	
 	@GetMapping("/city/update")
-	public String updateCity(@RequestParam("cityId") Long theId, Model theModel){
+	public String updateCity(@RequestParam("cityId") Long theId,@RequestParam("countryId") Long theCountryId, Model theModel){
+		theModel.addAttribute("countries", countryRepository.findAll());
 		Optional<City> theCity	=	cityRepository.findById(theId);
+		theModel.addAttribute("countryId", theCountryId);
 		theModel.addAttribute("city", theCity);
 		
 		return "/master/city/add-city";

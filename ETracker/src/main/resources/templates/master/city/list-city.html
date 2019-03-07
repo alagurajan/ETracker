@@ -20,17 +20,19 @@
 	<table id="empTable" class="table table-bordered table-striped table-sm">
 		<thead class="thead-dark">
 			<tr>
-				<th>City Id</th>
+				<th>Sl No</th>
+				<th>Country Name</th>
 				<th>City Name</th>
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="tempCity : ${city}">
-				<td th:text="${tempCity.id}"></td>
-				<td th:text="${tempCity.cityName}"></td>
+				<td th:text="${tempCityStat.index+1}"></td>
+				<td th:text="${tempCity.Country.countryName}"></td>
+				<td th:text="${tempCity.cityName}"></td>				
 				<td>
-					<a th:href="@{/master/city/update(cityId=${tempCity.id})}"
+					<a th:href="@{/master/city/update(cityId=${tempCity.id},countryId=${tempCity.Country.id})}"
 					class ="btn btn-info btn-sm">Update</a>
 					<a th:href="@{/master/city/delete(cityId=${tempCity.id})}"
 					class ="btn btn-danger btn-sm" 
