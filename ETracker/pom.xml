@@ -8,8 +8,8 @@
 		<version>2.1.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.luv2code.springboot</groupId>
-	<artifactId>thymeleafdemo</artifactId>
+	<groupId>com.source</groupId>
+	<artifactId>etracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>thymeleafdemo</name>
 	<description>Demo project for Spring Boot</description>
