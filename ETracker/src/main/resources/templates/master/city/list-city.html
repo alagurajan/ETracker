@@ -10,33 +10,31 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 <div class="container">
-	<h3>Employee Directory</h3>
+	<h3>City Master</h3>
 	<hr>
-	<a th:href="@{/employees/showFormForAdd}"
+	<a th:href="@{/master/city/add}"
 	class="btn btn-primary btn-sm mb-3"
 	>
-		Add Employee
+		Add City
 	</a>
 	<table id="empTable" class="table table-bordered table-striped table-sm">
 		<thead class="thead-dark">
 			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
+				<th>City Id</th>
+				<th>City Name</th>
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="tempEmployee : ${employees}">
-				<td th:text="${tempEmployee.firstName}"></td>
-				<td th:text="${tempEmployee.lastName}"></td>
-				<td th:text="${tempEmployee.email}"></td>
+			<tr th:each="tempCity : ${city}">
+				<td th:text="${tempCity.id}"></td>
+				<td th:text="${tempCity.cityName}"></td>
 				<td>
-					<a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"
+					<a th:href="@{/master/city/update(cityId=${tempCity.id})}"
 					class ="btn btn-info btn-sm">Update</a>
-					<a th:href="@{/employees/delete(employeeId=${tempEmployee.id})}"
+					<a th:href="@{/master/city/delete(cityId=${tempCity.id})}"
 					class ="btn btn-danger btn-sm" 
-					onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">Delete</a>
+					onclick="if (!(confirm('Are you sure you want to delete this city?'))) return false">Delete</a>
 				</td>
 			</tr>
 		</tbody>
