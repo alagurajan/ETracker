@@ -11,8 +11,8 @@
 	<groupId>com.source</groupId>
 	<artifactId>etracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>thymeleafdemo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ETracker</name>
+	<description>Invoice Tracking Application</description>
 
 	<properties>
 		<java.version>1.8</java.version>
