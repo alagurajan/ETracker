@@ -20,7 +20,7 @@ public class Country extends AuditEntity {
 	private Long id;
 	
 	@NotNull
-	@Size(max=100)
+	@Size(min=2, message="Country Name should be atleast 2 characters")
 	@Column(unique=true)
 	
 	
