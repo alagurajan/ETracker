@@ -19,6 +19,18 @@
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/utils/dataTable/jquery.dataTables.min.js}"></script>
+<script th:src="@{/utils/dataTable/dataTables.bootstrap4.min.js}"></script>
+<!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+<!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
+<script>
+$(document).ready (function(){
+	$('#dataTable').DataTable();
+	$(".alert-dismissible").fadeTo(7000, 500).slideUp(500, function(){
+	    $(".alert-dismissible").alert('close');
+	});
+});
+</script>
 
 <!--         <script type="text/javascript" -->
 <!--                 src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->

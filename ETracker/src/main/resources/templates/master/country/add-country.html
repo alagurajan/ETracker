@@ -13,11 +13,7 @@
 
 <form action="#" th:action="@{/master/country/save}"
 				th:object="${country}" method="POST">
-
-	<div class="alert alert-warning alert-dismissible" th:if="${#fields.hasErrors('*')}">
-    	<button type="button" class="close" data-dismiss="alert">&times;</button>
-    	<strong>Warning!</strong> This alert box could indicate a warning that might need attention.
-  	</div>
+	
 	<input type="hidden" th:field="*{id}">
  		<input type="text" th:field="*{countryName}"
 			class="form-control mb-4 col-4" placeholder="Country name">
@@ -25,10 +21,16 @@
  
 	<button type="submit" class="btn btn-info col-2" >Save</button>
 </form>
+
 <hr>
 <a th:href="@{/master/country/list}" >Back to the Country List</a>
+<br>
+<div class="alert alert-danger alert-dismissible" th:if="${errormessage!=null}">
+    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+    	<strong>Warning!</strong> 
+		<span th:text="${errormessage}"></span>
+  	</div>
 </div>
 	<div th:replace="fragments/footer :: footer"/>
-
 </body>
 </html>

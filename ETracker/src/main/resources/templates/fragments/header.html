@@ -2,13 +2,11 @@
 <head>
     <div th:fragment="header-css">
      <title th:text="${pageTitle}"></title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    	<meta name='viewport' content='width=device-width, initial-scale=1'>
         <!-- this is header-css -->
-        <link rel="stylesheet" type="text/css"
-              href="/etracker/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
-              <link rel="stylesheet" th:href="@{/css/main.css}"
-              href="../../css/main.css" />
-
+        	  <link rel="stylesheet" type="text/css" href="/etracker/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+              <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+              <link rel="stylesheet" th:href="@{/utils/dataTable/dataTables.bootstrap4.min.css}" href="../../utils/dataTable/dataTables.bootstrap4.min.css" />
     </div>
 </head>
 <body>
@@ -36,6 +34,8 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" th:href="@{/location/list}">Location</a></li>
               <li><a class="dropdown-item" th:href="@{/sublocaton/list}">Sub Loaction</a></li>
+               <li><a class="dropdown-item" th:text="@{ ${#httpServletRequest.remoteUser}}">Sub Loaction</a></li>
+             
             </ul>
           </li>
         </ul>
@@ -49,55 +49,55 @@
       <li class="nav-item">
         <a class="nav-link" th:href="@{/user}">User</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" th:href="@{/}">Action</a>
-          <a class="dropdown-item" th:href="@{/}">Another action</a>
-           <div class="dropdown-divider"></div>
-  			<a class="dropdown-item" href="#">Separated link</a>
-        </div>
+<!--       <li class="nav-item dropdown"> -->
+<!--         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!--           Dropdown link -->
+<!--         </a> -->
+<!--         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> -->
+<!--           <a class="dropdown-item" th:href="@{/}">Action</a> -->
+<!--           <a class="dropdown-item" th:href="@{/}">Another action</a> -->
+<!--            <div class="dropdown-divider"></div> -->
+<!--   			<a class="dropdown-item" href="#">Separated link</a> -->
+<!--         </div> -->
        
-      </li>
+<!--       </li> -->
      
-<!--      <This is For start of Multi Level submenu> -->
+<!--      <This is For start of Multi Level submenu>   -->
       
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-            <div class="dropdown-divider"></div>
-          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">Google</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Submenu</a></li>
-              <li><a class="dropdown-item" href="#">Submenu0</a></li>
-              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                  <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                   <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                  <li><a class="dropdown-item" href="#">Subsubmenu1</a></li>
-                </ul>
-              </li>
-                </ul>
-              </li>
-              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
-                  <li><a class="dropdown-item" href="#">Subsubmenu2</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+<!--       <li class="nav-item dropdown"> -->
+<!--         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+<!--           Dropdown -->
+<!--         </a> -->
+<!--         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1"> -->
+<!--           <li><a class="dropdown-item" href="#">Action</a></li> -->
+<!--           <li><a class="dropdown-item" href="#">Another action</a></li> -->
+<!--             <div class="dropdown-divider"></div> -->
+<!--           <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="http://google.com">Google</a> -->
+<!--             <ul class="dropdown-menu"> -->
+<!--               <li><a class="dropdown-item" href="#">Submenu</a></li> -->
+<!--               <li><a class="dropdown-item" href="#">Submenu0</a></li> -->
+<!--               <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a> -->
+<!--                 <ul class="dropdown-menu"> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu1</a></li> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu1</a></li> -->
+<!--                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 1</a> -->
+<!--                 <ul class="dropdown-menu"> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu1</a></li> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu1</a></li> -->
+<!--                 </ul> -->
+<!--               </li> -->
+<!--                 </ul> -->
+<!--               </li> -->
+<!--               <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a> -->
+<!--                 <ul class="dropdown-menu"> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu2</a></li> -->
+<!--                   <li><a class="dropdown-item" href="#">Subsubmenu2</a></li> -->
+<!--                 </ul> -->
+<!--               </li> -->
+<!--             </ul> -->
+<!--           </li> -->
+<!--         </ul> -->
+<!--       </li> -->
       
       <!--      <This is the End of Multi Level submenu> -->
     </ul>

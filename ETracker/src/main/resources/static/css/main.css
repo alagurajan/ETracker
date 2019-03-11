@@ -49,3 +49,14 @@ color: red;
     text-decoration: underline;
     transform: rotate(-90deg);
 } 
+.nav-item dropdown > ul > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(+90deg);
+} 
+
+.btn-group-xs > .btn, .btn-xs {
+  padding  : .25rem .4rem;
+  font-size  : .875rem;
+  line-height  : .75;
+  border-radius : .2rem;
+}
