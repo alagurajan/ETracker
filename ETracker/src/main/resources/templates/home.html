@@ -11,7 +11,7 @@
  <table width="100%" border="1" >
  <tr>
  <td width="70%" height="550">
-  	<embed th:src="@{'/pdf/'+${PdfFile}+'.pdf'}"   width="100%" height="100%" type='application/pdf'>
+  	<embed class="embed-responsive-item" th:src="@{'/pdf/'+${PdfFile}+'.pdf'}"   width="100%" height="100%" type='application/pdf'>
  </td>
  <td  width="30%">
  <table id="empTable" class="table table-fixed">
@@ -39,6 +39,5 @@
  </table>
  </div>
 <div th:replace="fragments/footer :: footer"/>
-
 </body>
 </html>

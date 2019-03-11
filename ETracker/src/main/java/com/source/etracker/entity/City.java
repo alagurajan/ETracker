@@ -26,7 +26,7 @@ public class City extends AuditEntity{
 	
 	
 	@NotNull
-	@Size(max=50)
+	@Size(max=50, message="City name should be atleast 2 character")
 	private String cityName;
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
